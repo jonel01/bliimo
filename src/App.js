@@ -12,8 +12,11 @@ class App extends Component{
     this.searching = this.searching.bind(this);
     this.changing = this.changing.bind(this);
     this.keypressing = this.keypressing.bind(this);
+    
   }
-
+  addDefaultSrc(ev){
+    ev.target.src = 'some default image url'
+  }
   searching(event){
     let query = this.state.query;
     const url = "https://www.googleapis.com/books/v1/volumes?q=" + query;
@@ -26,6 +29,7 @@ class App extends Component{
       // }
     // else{
       this.setState({items : items})
+
     // }
 })}
 
@@ -39,6 +43,11 @@ class App extends Component{
     this.searching();
   }
  
+  // error(event){
+  //   if(event.query==='undefined'){
+  //     alert('gg')
+  //   }
+  // }
   
 render(){ 
 return (
@@ -52,7 +61,7 @@ return (
                 {color: "darkturquoise", textTransform: "uppercase"}} className="nav-link" id="Home">Searching Books</NavLink></li>
                 <li className="nav-list-item"><input type="text" placeholder="Search Books"
                 name="search" id="books" className="search-bar" onChange={this.changing}
-                onKeyPress={this.keypressing}/></li>
+                onKeyPress={this.keypressing} /></li>
                 <li className="nav-list-item"><button id="search-btn" onClick={this.searching} className="search-btn">Search</button></li>  
             </ul>
     </nav>
